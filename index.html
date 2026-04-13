@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSOGN • The Unprecedented 50-Year Legacy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --obsidian: #0a0a0a;
+            --midnight: #1a1a2e;
+            --neon: #00f0ff;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Digital Fortress Background Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .fortress {
+            max-width: 960px;
+            width: 90%;
+            text-align: center;
+            z-index: 2;
+            padding: 3rem 1.5rem;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 24px;
+            box-shadow: 0 0 80px rgba(0, 240, 255, 0.15);
+            margin: 20px 0;
+        }
+
+        .logo {
+            font-size: clamp(3rem, 10vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -4px;
+            background: linear-gradient(90deg, #00f0ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 40px rgba(0, 240, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: clamp(0.8rem, 3vw, 1.2rem);
+            font-weight: 500;
+            color: #aaa;
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            max-width: 680px;
+            margin: 0 auto 2.5rem;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--neon);
+            padding: 12px 36px;
+            border-radius: 9999px;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: 1px solid var(--neon);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .legacy {
+            margin-top: 2.5rem;
+            font-size: 1rem;
+            color: #888;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .footer {
+            margin-top: 3.5rem;
+            font-size: 0.85rem;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.98); }
+        }
+    </style>
+</head>
+<body>
+    <div class="fortress">
+        <div class="logo">TSOGN</div>
+        <div class="subtitle">The Shared Origin Network</div>
+        
+        <h1>A 50-Year Legacy for My Son</h1>
+        
+        <p class="tagline">
+            A digital fortress built by a father for his son.<br>
+            History is a telephone game. This is the record that never gets lost.
+        </p>
+
+        <div class="coming-soon">COMING SOON • 2026</div>
+
+        <div class="legacy">
+            "Every page will carry my voice. Every chain will be verified. This is not just a website — it is an inheritance, a living record designed to protect the future."
+        </div>
+
+        <div class="footer">
+            MIDNITE PRODUCTIONS LLC • PROJECT: UNPRECEDENTED
+        </div>
+    </div>
+</body>
+</html>
