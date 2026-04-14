@@ -1,27 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { background:#000; color:#fff; font-family:sans-serif; text-align:center; display:flex; flex-direction:column; justify-content:center; height:100vh; margin:0; }
+        .fortress { padding:30px; max-width:600px; margin:auto; }
+        h1 { font-size: 1.5rem; letter-spacing: 1px; color: #eee; }
+        .tagline { color: #bbb; line-height: 1.6; font-size: 1.1rem; }
+        .legacy { font-style: italic; color: #666; font-size: 0.9rem; margin-top: 30px; border-top: 1px solid #222; padding-top: 20px; }
+        .coming-soon { color: #444; font-weight: bold; margin: 20px 0; letter-spacing: 3px; }
+        #gate { display:none; }
+        input { background:#111; color:#0f0; border:1px solid #333; padding:12px; width:220px; text-align:center; font-family:monospace; }
+        footer { position:fixed; bottom:20px; width:100%; opacity:0.1; }
+        button { background:#222; color:#fff; border:1px solid #444; padding:10px 20px; cursor:pointer; }
+    </style>
+</head>
 <body>
-    <div class="fortress">
-        <div class="logo">TSOGN</div>
-        <div class="subtitle">The Shared Origins Global Network</div>
-        
+    <div id="main" class="fortress">
         <h1>A 50-Year Legacy for My Son</h1>
         
         <p class="tagline">
-            Built by a father to help his son at his level.<br>
-            History is a telephone game. 
-            This is the record of our shared origins. 
+            Built by a father to help his son at his level.<br><br>
+            History is a telephone game. <br>
+            This is the record of our shared origins. <br>
             Come play with us and let's see what we have in common.
         </p>
 
         <div class="coming-soon">COMING SOON • 2026</div>
 
         <div class="legacy">
-            "Every page will carry my voice. Every chain will be verified. This is not just a website — it is an inheritance, a living record designed to protect the past so we don't forget who we are."
-        </div>
-
-        <div class="footer">
-         • PROJECT: UNPRECEDENTED
+            "Every page will carry my voice. This is not just a website — it is an inheritance, a living record designed to protect the past so we don't forget who we are."
         </div>
     </div>
+
+    <div id="gate" class="fortress">
+        <p style="color:#555; font-family:monospace;">SYSTEM ACCESS REQUIRED</p>
+        <input type="text" id="pass" placeholder="ENTER KEY">
+        <br><br>
+        <button onclick="check()">SUBMIT</button>
+    </div>
+
+    <footer>
+        <a onclick="show()" style="color:#444; text-decoration:none; font-size:10px; cursor:pointer;">Access</a>
+    </footer>
+
+    <script>
+        function show() { 
+            document.getElementById('main').style.display='none'; 
+            document.getElementById('gate').style.display='block'; 
+        }
+        function check() { 
+            var k = document.getElementById('pass').value; 
+            if(k.startsWith('TSOGN-F')) { 
+                alert('Access Granted. Welcome, Founder.'); 
+            } else { 
+                alert('Invalid Key.'); 
+            } 
+        }
+    </script>
 </body>
 </html>
-
