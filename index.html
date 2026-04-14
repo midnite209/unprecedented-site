@@ -1,62 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html style="background:#000;">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { background:#000; color:#fff; font-family:sans-serif; text-align:center; display:flex; flex-direction:column; justify-content:center; height:100vh; margin:0; }
-        .fortress { padding:30px; max-width:600px; margin:auto; }
-        h1 { font-size: 1.5rem; letter-spacing: 1px; color: #eee; }
-        .tagline { color: #bbb; line-height: 1.6; font-size: 1.1rem; }
-        .legacy { font-style: italic; color: #666; font-size: 0.9rem; margin-top: 30px; border-top: 1px solid #222; padding-top: 20px; }
-        .coming-soon { color: #444; font-weight: bold; margin: 20px 0; letter-spacing: 3px; }
-        #gate { display:none; }
-        input { background:#111; color:#0f0; border:1px solid #333; padding:12px; width:220px; text-align:center; font-family:monospace; }
-        footer { position:fixed; bottom:20px; width:100%; opacity:0.1; }
-        button { background:#222; color:#fff; border:1px solid #444; padding:10px 20px; cursor:pointer; }
+        body { background:#000; color:#fff; font-family:monospace; margin:0; text-align:center; }
+        .page { display:none; padding:20px; min-height:100vh; flex-direction:column; align-items:center; justify-content:center; }
+        #gate { display:flex; }
+        .grid { display:flex; flex-wrap:wrap; justify-content:center; max-width:850px; margin-top:20px; }
+        .card { background:#111; border:1px solid #222; padding:15px; margin:8px; width:130px; cursor:pointer; text-align:left; transition:0.2s; }
+        .card:hover { border-color:#0f0; background:#161616; }
+        #reader { text-align:left; max-width:650px; margin:auto; line-height:1.7; display:none; padding:40px 20px; color:#ccc; }
+        .ep-header { color:#0f0; border-bottom:1px solid #222; padding-bottom:10px; margin-bottom:30px; font-size:1.1rem; }
+        .sig-box { border-left:3px solid #0f0; padding-left:20px; margin:30px 0; color:#eee; font-style:italic; }
+        button { background:#111; color:#555; border:1px solid #222; padding:10px 20px; cursor:pointer; margin-top:40px; }
     </style>
 </head>
 <body>
-    <div id="main" class="fortress">
-        <h1>A 50-Year Legacy for My Son</h1>
-        
-        <p class="tagline">
-            Built by a father to help his son at his level.<br><br>
-            History is a telephone game. <br>
-            This is the record of our shared origins. <br>
-            Come play with us and let's see what we have in common.
-        </p>
 
-        <div class="coming-soon">COMING SOON • 2026</div>
+    <div id="gate" class="page">
+        <h1 style="letter-spacing:5px;">THE RECORD</h1>
+        <input type="text" id="k" placeholder="ENTER KEY" style="background:#000; border:1px solid #222; color:#0f0; padding:12px; text-align:center; outline:none;">
+        <button onclick="unlock()" style="color:#fff; border-color:#333;">VERIFY</button>
+    </div>
 
-        <div class="legacy">
-            "Every page will carry my voice. This is not just a website — it is an inheritance, a living record designed to protect the past so we don't forget who we are."
+    <div id="dash" class="page">
+        <h2 style="color:#444; font-size:12px; letter-spacing:2px;">LIBRARY TERMINAL • FOUNDING 200</h2>
+        <div class="grid">
+            <div class="card" onclick="showEp(0)"><div>FILE 00</div><div style="color:#555; font-size:9px;">Briefing</div></div>
+            <div class="card" onclick="showEp(1)"><div>FILE 01</div><div style="color:#555; font-size:9px;">Patterns</div></div>
+            <div class="card" onclick="showEp(4)"><div>FILE 04</div><div style="color:#555; font-size:9px;">Connections</div></div>
+            <div class="card" onclick="showEp(5)"><div>FILE 05</div><div style="color:#555; font-size:9px;">Illusory Truth</div></div>
+            <div class="card" onclick="showEp(6)"><div>FILE 06</div><div style="color:#555; font-size:9px;">History</div></div>
+            <div class="card" onclick="showEp(7)"><div>FILE 07</div><div style="color:#555; font-size:9px;">Sovereignty</div></div>
         </div>
+        <p style="margin-top:50px; color:#111; font-size:10px;">GATEWAY ACTIVE • NO REPETITION PROTOCOL</p>
     </div>
 
-    <div id="gate" class="fortress">
-        <p style="color:#555; font-family:monospace;">SYSTEM ACCESS REQUIRED</p>
-        <input type="text" id="pass" placeholder="ENTER KEY">
-        <br><br>
-        <button onclick="check()">SUBMIT</button>
+    <div id="reader">
+        <div id="content"></div>
+        <button onclick="closeEp()">RETURN TO TERMINAL</button>
     </div>
-
-    <footer>
-        <a onclick="show()" style="color:#444; text-decoration:none; font-size:10px; cursor:pointer;">Access</a>
-    </footer>
 
     <script>
-        function show() { 
-            document.getElementById('main').style.display='none'; 
-            document.getElementById('gate').style.display='block'; 
-        }
-        function check() { 
-            var k = document.getElementById('pass').value; 
-            if(k.startsWith('TSOGN-F')) { 
-                alert('Access Granted. Welcome, Founder.'); 
-            } else { 
-                alert('Invalid Key.'); 
-            } 
-        }
+        const episodes = {
+            0: { title: "EP 00: MISSION BRIEFING", text: `<div class='sig-box'>I’m doing this for my son. He’s non-verbal, and I want him to have the best possible chance to understand the world as it really is.</div><p>"A house divided against itself cannot stand." — Abraham Lincoln</p>` },
+            1: { title: "EP 01: REPEATING PATTERNS", text: `<p>Algorithms show you what you engage with. Repeated exposure makes ideas feel more familiar.</p><div class='sig-box'>"History doesn't repeat itself, but it does rhyme." — Mark Twain</div>` },
+            4: { title: "EP 04: CONNECTIONS VS CAUSATION", text: `<p>Correlation is not causation. Just because things happen together doesn't mean they are linked by cause.</p><div class='sig-box'>"Reason is the natural enemy of arbitrary power." — John Adams</div>` },
+            5: { title: "EP 05: THE ILLUSORY TRUTH EFFECT", text: `<p>Repetition creates familiarity. Familiarity can feel like truth.</p><div class='sig-box'>"The first duty of a man is to think for himself." — Jose Marti</div>` },
+            6: { title: "EP 06: CONFLICTING HISTORY", text: `<p>Historical records are shaped by perspective. Disagreement is a feature of the record.</p><div class='sig-box'>"Truth is the only merit that gives dignity and worth to history." — Lord Acton</div>` },
+            7: { title: "EP 07: SOVEREIGN THOUGHT", text: `<p>Free thinking is the essential tool for a healthy society.</p><div class='sig-box'>"The important thing is not to stop questioning." — Albert Einstein</div>` }
+        };
+
+        function unlock() { if(document.getElementById('k').value.toUpperCase().startsWith('TSOGN-F')) { document.getElementById('gate').style.display = 'none'; document.getElementById('dash').style.display = 'flex'; } }
+        function showEp(id) { document.getElementById('dash').style.display = 'none'; document.getElementById('reader').style.display = 'block'; document.getElementById('content').innerHTML = `<div class='ep-header'>${episodes[id].title}</div>` + episodes[id].text; window.scrollTo(0,0); }
+        function closeEp() { document.getElementById('reader').style.display = 'none'; document.getElementById('dash').style.display = 'flex'; }
     </script>
 </body>
 </html>
